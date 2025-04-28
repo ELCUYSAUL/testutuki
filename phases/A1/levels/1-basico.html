@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A1.1 - Saludos Básicos</title>
+  <style>
+    :root {
+      --primary: #ff2600; /* Naranja Duolingo */
+      --secondary: #1cb0f6;
+      --dark: #2e2e2e;
+      --light: #f8f8f8;
+    }
+    
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--light);
+      color: var(--dark);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    .header {
+      background: white;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .progress-bar {
+      height: 5px;
+      background: #e0e0e0;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+    
+    .progress {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 5px;
+      width: 20%; /* Actualizar dinámicamente */
+    }
+    
+    .lesson-container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 0 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .topic-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      border-top: 4px solid var(--primary);
+      display: none; /* Ocultar todos inicialmente */
+    }
+    
+    .topic-card.active {
+      display: block; /* Mostrar solo el activo */
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .topic-title {
+      color: var(--primary);
+      margin-top: 0;
+      font-size: 1.4rem;
+    }
+    
+    .vocab-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      margin: 10px 0;
+      background: #f5f9fc;
+      border-radius: 8px;
+    }
+    
+    .quechua {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: var(--dark);
+    }
+    
+    .pronunciation {
+      color: #666;
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+    
+    .translation {
+      color: var(--primary);
+      font-weight: 500;
+    }
+    
+    .grammar-point {
+      background: #f0f7ff;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      border-left: 3px solid var(--secondary);
+    }
+    
+    .example {
+      font-family: monospace;
+      background: #f8f8f8;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin: 5px 0;
+      display: inline-block;
+    }
+    
+    .audio-btn {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--secondary);
+    }
+    
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: auto;
+      padding: 20px 0;
+    }
+    
+    .nav-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    
+    .nav-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    
+    .nav-btn.secondary {
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .step-indicator {
+      text-align: center;
+      color: #666;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h2>Unidad 1: Saludos Básicos</h2>
+  <div class="progress-bar">
+    <div class="progress" id="progress-bar"></div>
+  </div>
+</div>
+
+<div class="lesson-container">
+  
+  <!-- Tema 1: Saludos comunes -->
+  <div class="topic-card active" id="topic1">
+    <h3 class="topic-title">1. Saludos Diarios</h3>
+    
+    <div class="vocab-card">
+      <div>
+        <div class="quechua">Rimaykullayki</div>
+        <div class="pronunciation">/ri-may-kul-la-yki/</div>
+      </div>
+      <div class="translation">Hola (formal)</div>
+      <button class="audio-btn">🔊</button>
+    </div>
+    
+    <div class="vocab-card">
+      <div>
+        <div class="quechua">Allin p'unchay</div>
+        <div class="pronunciation">/a-yin pun-chay/</div>
+      </div>
+      <div class="translation">Buenos días</div>
+      <button class="audio-btn">🔊</button>
+    </div>
+    
+    <div class="grammar-point">
+      <p><strong>Uso cultural:</strong> "Rimaykullayki" se usa con personas que no conoces o en situaciones formales.</p>
+    </div>
+    
+    <div class="step-indicator">Tema 1 de 4</div>
+  </div>
+  
+  <!-- Tema 2: Presentaciones -->
+  <div class="topic-card" id="topic2">
+    <h3 class="topic-title">2. Decir tu nombre</h3>
+    
+    <div class="vocab-card">
+      <div>
+        <div class="quechua">Ñuqaqa</div>
+        <div class="pronunciation">/nyu-qa-qa/</div>
+      </div>
+      <div class="translation">Yo</div>
+      <button class="audio-btn">🔊</button>
+    </div>
+    
+    <div class="vocab-card">
+      <div>
+        <div class="quechua">Sutiyqa</div>
+        <div class="pronunciation">/su-ti-yqa/</div>
+      </div>
+      <div class="translation">Mi nombre es</div>
+      <button class="audio-btn">🔊</button>
+    </div>
+    
+    <div class="grammar-point">
+      <p><strong>Gramática:</strong> El sufijo "-qa" marca el tema de la oración.</p>
+      <div class="example">Ñuqaqa → En cuanto a mí / Yo</div>
+      <div class="example">Sutiyqa → En cuanto a mi nombre</div>
+    </div>
+    
+    <div class="step-indicator">Tema 2 de 4</div>
+  </div>
+  
+  <!-- Tema 3: Preguntas básicas -->
+  <div class="topic-card" id="topic3">
+    <h3 class="topic-title">3. Preguntar nombres</h3>
+    
+    <div class="vocab-card">
+      <div>
+        <div class="quechua">¿Iman sutiyki?</div>
+        <div class="pronunciation">/i-man su-ti-yki/</div>
+      </div>
+      <div class="translation">¿Cómo te llamas?</div>
+      <button class="audio-btn">🔊</button>
+    </div>
+    
+    <div class="vocab-card">
+      <div>
+        <div class="quechua">¿Maymantataq kanki?</div>
+        <div class="pronunciation">/may-man-ta-taq kan-ki/</div>
+      </div>
+      <div class="translation">¿De dónde eres?</div>
+      <button class="audio-btn">🔊</button>
+    </div>
+    
+    <div class="grammar-point">
+      <p><strong>Estructura:</strong> Las preguntas en quechua suelen terminar con "-taq".</p>
+      <div class="example">Maymantataq → ¿De dónde?</div>
+      <div class="example">Imataq → ¿Qué?</div>
+    </div>
+    
+    <div class="step-indicator">Tema 3 de 4</div>
+  </div>
+  
+  <!-- Tema 4: Diálogo completo -->
+  <div class="topic-card" id="topic4">
+    <h3 class="topic-title">4. Diálogo de ejemplo</h3>
+    
+    <div style="background: #f0f7f0; padding: 15px; border-radius: 8px;">
+      <p><strong>Juan:</strong> Rimaykullayki! (¡Hola!)</p>
+      <p><strong>María:</strong> Rimaykullayki! (¡Hola!)</p>
+      <p><strong>Juan:</strong> ¿Iman sutiyki? (¿Cómo te llamas?)</p>
+      <p><strong>María:</strong> Ñuqaqa Maríam. (Yo soy María)</p>
+      <p><strong>Juan:</strong> Allin p'unchay, María! (¡Buenos días, María!)</p>
+    </div>
+    
+    <div class="grammar-point">
+      <p><strong>Nota:</strong> "-m" al final de "Maríam" es un sufijo de afirmación.</p>
+    </div>
+    
+    <div class="step-indicator">Tema 4 de 4</div>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="nav-btn secondary" id="prev-btn" disabled>← Anterior</button>
+    <button class="nav-btn" id="next-btn">Siguiente →</button>
+  </div>
+</div>
+
+<script>
+  // Configuración de navegación
+  const topics = document.querySelectorAll('.topic-card');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const progressBar = document.getElementById('progress-bar');
+  let currentTopic = 0;
+
+  // Mostrar el primer tema al cargar
+  showTopic(currentTopic);
+
+  // Botón Siguiente
+  nextBtn.addEventListener('click', () => {
+    if (currentTopic < topics.length - 1) {
+      currentTopic++;
+      showTopic(currentTopic);
+    } else {
+      // Aquí iría la redirección a ejercicios
+      alert("¡Fin de la lección! ¿Listo para practicar?");
+    }
+  });
+
+  // Botón Anterior
+  prevBtn.addEventListener('click', () => {
+    if (currentTopic > 0) {
+      currentTopic--;
+      showTopic(currentTopic);
+    }
+  });
+
+  // Función para mostrar un tema específico
+  function showTopic(index) {
+    // Ocultar todos los temas
+    topics.forEach(topic => topic.classList.remove('active'));
+    
+    // Mostrar el tema actual
+    topics[index].classList.add('active');
+    
+    // Actualizar botones de navegación
+    prevBtn.disabled = index === 0;
+    nextBtn.textContent = index === topics.length - 1 ? "Finalizar lección" : "Siguiente →";
+    
+    // Actualizar barra de progreso
+    const progress = ((index + 1) / topics.length) * 100;
+    progressBar.style.width = `${progress}%`;
+  }
+
+  // Función para reproducir audio (simulada)
+  document.querySelectorAll('.audio-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const word = this.parentElement.querySelector('.quechua').textContent;
+      alert(`Reproduciendo: ${word}`);
+    });
+  });
+</script>
+
+</body>
+</html>

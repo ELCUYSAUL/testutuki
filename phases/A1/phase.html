@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase A1: Explorador - Quechua Explorer</title>
+    <!-- Favicon de la mascota -->
+    <link rel="icon" href="assets/mascota-logo.png" type="image/png">
+    <style>
+        :root {
+            --primary: #ff2600;
+            --primary-light: #e66f2b;
+            --primary-dark: #9e5023;
+            --secondary: #FFC107;
+            --accent: #2196F3;
+            --dark: #212121;
+            --light: #F5F5F5;
+            --white: #FFFFFF;
+            --gray: #757575;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 2rem 1rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .mascota-logo {
+            width: 70px;
+            height: 70px;
+            margin-right: 15px;
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            object-fit: cover;
+        }
+        
+        .header-text {
+            text-align: left;
+        }
+        
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--light);
+            transform: skewY(-3deg);
+            z-index: 1;
+        }
+        
+        .header-decoration {
+            position: absolute;
+            opacity: 0.1;
+            font-size: 8rem;
+            z-index: 0;
+        }
+        
+        .dec-left {
+            left: 20px;
+            top: 20px;
+        }
+        
+        .dec-right {
+            right: 20px;
+            bottom: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: -2rem auto 0;
+            padding: 2rem 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .phase-info {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .phase-info p {
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+        
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .level-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid var(--primary-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .level-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .level-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .level-card p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+        
+        .level-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+        
+        .progress-container {
+            width: 100%;
+            background: #E0E0E0;
+            border-radius: 10px;
+            margin-top: auto;
+            height: 8px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 10px;
+            width: 30%; /* Ajustar según progreso real */
+            transition: width 0.5s ease;
+        }
+        
+        .level-card:hover .progress-bar {
+            width: 35%;
+        }
+        
+        .level-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 1rem 3rem;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .mascota-logo {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .header-text {
+                text-align: center;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .levels-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-decoration {
+                font-size: 5rem;
+            }
+            
+            .mascota-logo {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-decoration dec-left">🌄</div>
+        <div class="header-content">
+            <div class="logo-container">
+                <!-- Mascota en el header -->
+                <img src="assets/mascota-logo.png" alt="Mascota Quechua Explorer" class="mascota-logo">
+                <div class="header-text">
+                    <h1>Fase A1: Explorador</h1>
+                    <p>Comienza tu viaje en el aprendizaje del Quechua</p>
+                </div>
+            </div>
+        </div>
+        <div class="header-decoration dec-right">🗣️</div>
+    </header>
+
+    <div class="container">
+        <div class="phase-info">
+            <h2>Nivel Básico</h2>
+            <p>Aprende los fundamentos del Quechua para comunicarte en situaciones cotidianas</p>
+        </div>
+        
+        <div class="levels-grid">
+            <!-- Nivel 1 -->
+            <a href="levels/1-basico.html" class="level-card">
+                <div class="level-badge">Nuevo</div>
+                <div class="level-icon">👋</div>
+                <h3>Nivel 1</h3>
+                <p>Saludos y Presentaciones</p>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </a>
+            
+            <!-- Nivel 2 -->
+            <a href="levels/2-intermedio.html" class="level-card">
+                <div class="level-icon">🔢</div>
+                <h3>Nivel 2</h3>
+                <p>Números y Colores</p>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                </div>
+            </a>
+            
+            <!-- Nivel 3 -->
+            <a href="levels/3-avanzado.html" class="level-card">
+                <div class="level-icon">🏠</div>
+                <h3>Nivel 3</h3>
+                <p>Familia y Hogar</p>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 Quechua Explorer - Fase A1: Explorador</p>
+    </footer>
+</body>
+</html>
