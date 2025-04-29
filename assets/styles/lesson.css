@@ -1,0 +1,144 @@
+/* Estructura principal */
+.lesson-header {
+    background: white;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .progress-bar {
+    height: 5px;
+    background: #e0e0e0;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  .progress {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 5px;
+    transition: width 0.3s ease;
+  }
+  
+  .lesson-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 0 15px;
+    flex: 1;
+  }
+  
+  /* Componentes de lección */
+  .topic-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    border-top: 4px solid var(--primary);
+    display: none;
+  }
+  
+  .topic-card.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* [Resto de estilos de lección...] */
+  
+  /* Vocabulario */
+  .vocab-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin: 10px 0;
+    background: #f5f9fc;
+    border-radius: 8px;
+    transition: transform 0.2s;
+  }
+  
+  .vocab-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .quechua {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .pronunciation {
+    color: var(--gray);
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+  
+  .translation {
+    color: var(--primary);
+    font-weight: 500;
+  }
+  
+  .vocab-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin: 15px 0;
+  }
+  
+  .vocab-item {
+    background: #f5f9fc;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  /* Navegación */
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    padding: 20px 0;
+  }
+  
+  .nav-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 38, 0, 0.2);
+  }
+  
+  .nav-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .nav-btn.secondary {
+    background: white;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+  }
+
+  /* Estilos para resumen */
+.summary-list {
+    margin: 15px 0;
+    padding-left: 20px;
+  }
+  
+  .summary-list li {
+    margin-bottom: 8px;
+  }

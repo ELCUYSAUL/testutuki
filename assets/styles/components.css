@@ -1,0 +1,76 @@
+/* Logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.mascota-logo {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+    border-radius: 50%;
+    border: 3px solid var(--white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    object-fit: cover;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cards */
+.phase-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--dark);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.phase-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--accent);
+}
+
+.phase-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.phase-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-dark);
+}
+
+.phase-card p {
+    color: #666;
+    font-size: 1rem;
+}
+
+.phase-card:nth-child(1)::before { background: #4CAF50; }
+.phase-card:nth-child(2)::before { background: #2196F3; }
+.phase-card:nth-child(3)::before { background: #FF9800; }
+.phase-card:nth-child(4)::before { background: #9C27B0; }
+.phase-card:nth-child(5)::before { background: #E91E63; }
+.phase-card:nth-child(6)::before { background: #607D8B; }
+
+.phase-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+}

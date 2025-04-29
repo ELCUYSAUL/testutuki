@@ -1,0 +1,25 @@
+:root {
+    --primary: #ff2600;
+    --secondary: #1cb0f6;
+    --dark: #2e2e2e;
+    --light: #f8f8f8;
+    --correct: #4CAF50;
+    --incorrect: #F44336;
+    --gray: #757575;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }

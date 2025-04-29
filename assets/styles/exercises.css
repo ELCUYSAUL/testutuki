@@ -1,0 +1,49 @@
+/* Ejercicios */
+.exercise {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  }
+  
+  .exercise-title {
+    color: var(--primary);
+    margin-top: 0;
+  }
+  
+  .blank {
+    display: inline-block;
+    min-width: 100px;
+    border-bottom: 2px solid var(--primary);
+    margin: 0 5px;
+    text-align: center;
+  }
+  
+  .options-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+  }
+  
+  .option {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: all 0.2s;
+  }
+  
+  .option:hover {
+    background: #f0f0f0;
+  }
+  
+  .option.selected {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+  
+  /* [Resto de estilos de ejercicios...] */
