@@ -45,5 +45,16 @@
     color: white;
     border-color: var(--primary);
   }
+
+  .audio-button.playing {
+    animation: pulse 1.5s infinite;
+    background: var(--primary-dark);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 38, 0, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 38, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 38, 0, 0); }
+}
   
   /* [Resto de estilos de ejercicios...] */

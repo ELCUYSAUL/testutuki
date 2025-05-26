@@ -1,7 +1,9 @@
 class ExerciseManager {
     constructor(exercises = []) {
       this.exercises = exercises;
+      this.audioElements = {};
       this.score = 0;
+
       this.init();
     }
   
@@ -108,28 +110,94 @@ class ExerciseManager {
     }
   
     setupTooltips() {
-      const tooltip = document.getElementById('tooltip');
-      document.querySelectorAll('[data-translation]').forEach(el => {
+    const translationDisplay = document.getElementById('translationDisplay');
+    
+    document.querySelectorAll('[data-translation]').forEach(el => {
         el.addEventListener('click', (e) => {
-          tooltip.textContent = el.dataset.translation;
-          tooltip.style.left = `${e.pageX}px`;
-          tooltip.style.top = `${e.pageY}px`;
-          tooltip.style.opacity = '1';
-          
-          setTimeout(() => {
-            tooltip.style.opacity = '0';
-          }, 2000);
+            if (translationDisplay) {
+                translationDisplay.textContent = el.dataset.translation;
+                translationDisplay.style.display = 'block';
+                
+                setTimeout(() => {
+                    translationDisplay.style.display = 'none';
+                }, 2000);
+            }
         });
-      });
-    }
+    });
+}
   
     setupAudioButtons() {
-      document.querySelectorAll('.audio-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const word = btn.closest('.vocab-card').querySelector('.quechua').textContent;
-          console.log(`Reproduciendo: ${word}`);
+        // Configurar botones de audio normales y especiales
+        const buttons = document.querySelectorAll('.audio-btn, .audio-button');
+        if (!buttons.length) {
+            console.warn("No se encontraron botones de audio");
+            return;
+        }
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evita eventos duplicados
+                
+                const audioId = btn.getAttribute('data-audio');
+                if (audioId) {
+                    this.playAudio(audioId, btn);
+                } else {
+                    // Para compatibilidad con botones antiguos
+                    const word = btn.closest('.vocab-card')?.querySelector('.quechua')?.textContent;
+                    console.log(`Reproduciendo: ${word}`);
+                }
+            });
         });
-      });
+
+        // Configurar imágenes interactivas con audio
+        document.querySelectorAll('.interactive-image[data-audio]').forEach(img => {
+            img.addEventListener('click', (e) => {
+                const audioId = img.getAttribute('data-audio');
+                this.playAudio(audioId);
+            });
+        });
+    }
+
+    playAudio(audioId, buttonElement = null) {
+        // Pausar todos los audios primero
+        document.querySelectorAll('audio').forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+
+        // Obtener el elemento de audio (usando caché si está disponible)
+        let audioElement = this.audioElements[audioId];
+        if (!audioElement) {
+            audioElement = document.getElementById(audioId);
+            if (audioElement) {
+                this.audioElements[audioId] = audioElement;
+            }
+        }
+
+        if (audioElement) {
+            // Intentar reproducir el audio
+            audioElement.play().catch(error => {
+                console.error("Error al reproducir audio:", error);
+                
+                // Mostrar feedback al usuario solo si es un botón
+                if (buttonElement) {
+                    buttonElement.textContent = "❌ Error";
+                    setTimeout(() => {
+                        buttonElement.textContent = "🔊";
+                    }, 2000);
+                }
+            });
+
+            // Animación del botón si existe
+            if (buttonElement) {
+                buttonElement.classList.add('playing');
+                audioElement.onended = () => {
+                    buttonElement.classList.remove('playing');
+                };
+            }
+        } else {
+            console.warn(`Elemento de audio no encontrado: ${audioId}`);
+        }
     }
   }
   
