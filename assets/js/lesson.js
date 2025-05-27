@@ -12,8 +12,11 @@ class LessonController {
     }
   
     setupNavigation() {
-      document.getElementById('next-btn').addEventListener('click', () => this.next());
-      document.getElementById('prev-btn').addEventListener('click', () => this.prev());
+      const nextBtn = document.getElementById('next-btn');
+      const prevBtn = document.getElementById('prev-btn');
+      
+      if (nextBtn) nextBtn.addEventListener('click', () => this.next());
+      if (prevBtn) prevBtn.addEventListener('click', () => this.prev());
     }
   
     setupLessonButtons() {
@@ -32,6 +35,8 @@ class LessonController {
         if (this.currentTopic === this.topics.length - 1) {
           this.showFinalScreen();
         }
+      } else {
+        this.nextLesson();
       }
     }
   
@@ -59,31 +64,43 @@ class LessonController {
       const prevBtn = document.getElementById('prev-btn');
       const nextBtn = document.getElementById('next-btn');
       
-      prevBtn.disabled = index === 0;
+      if (!prevBtn || !nextBtn) return;
       
-      const isLastTopic = index === this.topics.length - 1;
-      nextBtn.style.display = isLastTopic ? 'none' : 'block';
-      nextBtn.textContent = index === this.topics.length - 2 ? "Finalizar" : "Siguiente →";
+      prevBtn.disabled = index === 0;
+      nextBtn.textContent = index === this.topics.length - 1 ? "Finalizar" : "Siguiente →";
     }
-  
+
     showFinalScreen() {
       const finalScreen = document.getElementById('final-screen');
       if (finalScreen) {
         finalScreen.style.display = 'block';
       }
     }
-  
+
     updateProgress(index) {
-      const progress = ((index + 1) / this.topics.length) * 100;
-      document.getElementById('progress-bar').style.width = `${progress}%`;
+      const progressBar = document.getElementById('progress-bar');
+      if (progressBar) {
+        const progress = ((index + 1) / this.topics.length) * 100;
+        progressBar.style.width = `${progress}%`;
+      }
     }
   
     nextLesson() {
-      console.log("Redirigiendo a siguiente lección...");
-      // window.location.href = "2-intermedio.html"; // Descomenta esta línea
-      alert("¡Próxima lección cargada!"); // Solo para prueba
+      // Obtener la ruta base del proyecto
+      const basePath = window.location.href.includes('phases/A1/levels') 
+        ? '../../../' 
+        : window.location.href.includes('phases/A1') 
+          ? '../../' 
+          : './';
+      
+      // Redirección a phase.html
+      window.location.href = `${basePath}phases/A1/phase.html`;
     }
+}
+
+// Inicialización
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.querySelector('.topic-card')) {
+    new LessonController();
   }
-  
-  // Inicialización
-  document.addEventListener('DOMContentLoaded', () => new LessonController());
+});
