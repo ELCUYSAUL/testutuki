@@ -3,79 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aprende Quechua - Inicio</title>
-    <link rel="icon" href="assets/mascota-logo.png" type="image/png">
-    <!-- CSS organizado -->
-    <link rel="stylesheet" href="assets/styles/base.css">
-    <link rel="stylesheet" href="assets/styles/layout.css">
-    <link rel="stylesheet" href="assets/styles/components.css">
+    <title>Calculadora de Abarrotes</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- El resto del HTML se mantiene igual -->
-    <header>
-        <div class="logo-container">
-            <img src="assets/mascota-logo.png" alt="Mascota Quechua Explorer" class="mascota-logo">
-            <div class="header-text">
-                <h1>Quechua Explorer</h1>
-                <p>Embárcate en el viaje de aprender Quechua</p>
+    <div id="app">
+        <!-- Sección de Login/Creación de Perfil -->
+        <div id="auth-section" class="section active">
+            <div class="auth-container">
+                <h1><i class="fas fa-store"></i> Calculadora de Abarrotes</h1>
+                <div class="auth-form">
+                    <input type="text" id="username-input" placeholder="Tu nombre" class="input-field">
+                    <button id="login-btn" class="btn primary">Entrar a mi tienda</button>
+                </div>
             </div>
         </div>
-    </header>
 
-    <div class="container">
-        <div class="phases-grid">
-            <!-- Fase A1 -->
-            <a href="phases/A1/phase.html" class="phase-card">
-                <div class="phase-icon">🌱</div>
-                <h2>Fase A1</h2>
-                <p>Explorador (Básico)</p>
-                <p class="phase-desc">Aprende saludos y vocabulario esencial</p>
-            </a>
-            
-            <!-- Fase A2 -->
-            <a href="phases/A2/phase.html" class="phase-card">
-                <div class="phase-icon">🌍</div>
-                <h2>Fase A2</h2>
-                <p>Viajero (Intermedio)</p>
-                <p class="phase-desc">Conversaciones cotidianas y gramática</p>
-            </a>
-            
-            <!-- Fase B1 -->
-            <a href="phases/B1/phase.html" class="phase-card">
-                <div class="phase-icon">🗣️</div>
-                <h2>Fase B1</h2>
-                <p>Comunicador</p>
-                <p class="phase-desc">Expresa ideas complejas</p>
-            </a>
-            
-            <!-- Fase B2 -->
-            <a href="phases/B2/phase.html" class="phase-card">
-                <div class="phase-icon">🏔️</div>
-                <h2>Fase B2</h2>
-                <p>Experto Cultural</p>
-                <p class="phase-desc">Domina expresiones culturales</p>
-            </a>
-            
-            <!-- Fase C1 -->
-            <a href="phases/C1/phase.html" class="phase-card">
-                <div class="phase-icon">🎓</div>
-                <h2>Fase C1</h2>
-                <p>Maestro</p>
-                <p class="phase-desc">Fluidez avanzada</p>
-            </a>
-            
-            <!-- Fase C2 -->
-            <a href="phases/C2/phase.html" class="phase-card">
-                <div class="phase-icon">👑</div>
-                <h2>Fase C2</h2>
-                <p>Nativo Honorario</p>
-                <p class="phase-desc">Dominio completo del idioma</p>
-            </a>
+        <!-- Sección Principal de la Tienda -->
+        <div id="main-section" class="section">
+            <header class="app-header">
+                <h2 id="store-name">Bienvenido</h2>
+                <button id="logout-btn" class="btn small"><i class="fas fa-sign-out-alt"></i></button>
+            </header>
+
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="products-tab"><i class="fas fa-box-open"></i> Productos</button>
+                <button class="tab-btn" data-tab="sales-tab"><i class="fas fa-cash-register"></i> Ventas</button>
+                <button class="tab-btn" data-tab="reports-tab"><i class="fas fa-chart-bar"></i> Reportes</button>
+            </div>
+
+            <!-- Contenido de Pestañas -->
+            <div class="tab-content">
+                <!-- Pestaña de Productos -->
+                <div id="products-tab" class="tab-pane active">
+                    <button id="add-product-btn" class="btn primary"><i class="fas fa-plus"></i> Agregar Producto</button>
+                    <div id="products-list" class="grid-container"></div>
+                </div>
+
+                <!-- Pestaña de Ventas -->
+                <div id="sales-tab" class="tab-pane">
+                    <div id="current-sale">
+                        <h3>Venta en Progreso</h3>
+                        <div id="sale-items-list"></div>
+                        <div class="sale-total">
+                            <span>Total esperado: $</span>
+                            <span id="sale-total-amount">0.00</span>
+                        </div>
+                        <button id="complete-sale-btn" class="btn success" disabled>Finalizar Venta</button>
+                    </div>
+                </div>
+
+                <!-- Pestaña de Reportes -->
+                <div id="reports-tab" class="tab-pane">
+                    <div class="report-filters">
+                        <input type="date" id="report-start-date" class="input-field">
+                        <input type="date" id="report-end-date" class="input-field">
+                        <button id="generate-report-btn" class="btn primary">Generar Reporte</button>
+                    </div>
+                    <div id="report-results"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para Agregar Producto -->
+        <div id="add-product-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Agregar Nuevo Producto</h3>
+                <form id="add-product-form">
+                    <div class="form-group">
+                        <label for="product-name">Nombre del Producto</label>
+                        <input type="text" id="product-name" class="input-field" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-price">Precio ($)</label>
+                        <input type="number" id="product-price" class="input-field" step="0.01" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-image">Imagen (URL)</label>
+                        <input type="text" id="product-image" class="input-field" placeholder="https://ejemplo.com/imagen.jpg">
+                    </div>
+                    <button type="submit" class="btn primary">Guardar Producto</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal para Registrar Venta -->
+        <div id="sale-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3 id="sale-product-name">Registrar Venta</h3>
+                <div class="product-image-container">
+                    <img id="sale-product-image" src="" alt="Producto">
+                </div>
+                <div class="product-info">
+                    <span>Precio: $</span>
+                    <span id="sale-product-price">0.00</span>
+                </div>
+                <div class="form-group">
+                    <label for="sale-quantity">Cantidad vendida</label>
+                    <input type="number" id="sale-quantity" class="input-field" min="1" value="1">
+                </div>
+                <div class="product-info total">
+                    <span>Total: $</span>
+                    <span id="sale-total">0.00</span>
+                </div>
+                <button id="confirm-sale-btn" class="btn primary">Agregar a Venta</button>
+            </div>
         </div>
     </div>
 
-    <footer>
-        <p>© 2025 Quechua Explorer Proyecto </p>
-    </footer>
+    <script src="js/auth.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/sales.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Anuncio de video -->
+<div id="videoAd" class="video-ad">
+  <div class="ad-content">
+    <video id="adVideo" width="640" height="360" controls>
+      <source src="assets/videos/anuncio.webm" type="video/webm">
+      Tu navegador no soporta videos HTML5.
+    </video>
+    <div class="ad-footer">
+      <span id="adCountdown">El anuncio puede cerrarse en 20 segundos</span>
+      <button id="closeAdBtn" disabled>Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/ad-system.js"></script>
 </body>
 </html>
+
