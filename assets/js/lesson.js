@@ -86,15 +86,24 @@ class LessonController {
     }
   
     nextLesson() {
-      // Obtener la ruta base del proyecto
-      const basePath = window.location.href.includes('phases/A1/levels') 
-        ? '../../../' 
-        : window.location.href.includes('phases/A1') 
-          ? '../../' 
-          : './';
-      
-      // Redirección a phase.html
-      window.location.href = `${basePath}phases/A1/phase.html`;
+        // Obtener la ruta actual
+        const currentPath = window.location.pathname;
+        
+        // Extraer partes importantes de la ruta:
+        // 1. El idioma (quechua, aymara, etc.)
+        // 2. El nivel (A1, A2, B1, etc.)
+        const pathParts = currentPath.split('/');
+        const phasesIndex = pathParts.findIndex(part => part.startsWith('phases-'));
+        const language = phasesIndex !== -1 ? pathParts[phasesIndex].replace('phases-', '') : 'quechua';
+        const level = phasesIndex !== -1 && pathParts.length > phasesIndex + 1 ? pathParts[phasesIndex + 1] : 'A1';
+        
+        // Construir la nueva ruta relativa
+        // Subimos hasta la carpeta del nivel (eliminando /levels/...)
+        const basePathParts = pathParts.slice(0, phasesIndex + 2);
+        const newPath = [...basePathParts, 'phase.html'].join('/');
+        
+        // Redirección a phase.html
+        window.location.href = newPath;
     }
 }
 

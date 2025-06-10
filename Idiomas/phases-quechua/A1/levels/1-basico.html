@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A1.1 - Saludos Básicos</title>
+  <link rel="stylesheet" href="../../../../assets/styles/base.css">
+  <link rel="stylesheet" href="../../../../assets/styles/lesson.css">
+  <link rel="stylesheet" href="../../../../assets/styles/exercises.css">
+  <style>
+    .translation-display {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #f0f7f0;
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 1000;
+      display: none;
+    }
+    .clickable {
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+    /* Excluir botones de opciones y inputs */
+    .options-container .option-btn,
+    .text-input {
+      cursor: auto;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header class="lesson-header">
+    <h2>Unidad 1: Saludos Básicos</h2>
+    <div class="progress-bar">
+      <div class="progress" id="progress-bar"></div>
+    </div>
+  </header>
+
+  <main class="lesson-container">
+  
+    <!-- Tema 1 -->
+<div class="topic-card active" id="topic1">
+  <h3 class="topic-title">1. Saludos Diarios</h3>
+  <!-- Contenido -->
+  <div class="vocab-card">
+    <div>
+      <div class="quechua clickable" data-translation="Hola (formal)">Rimaykullayki</div>
+      <div class="pronunciation">/ri-may-kul-la-yki/</div>
+    </div>
+    <div class="translation clickable" data-quechua="Rimaykullayki">Hola (formal)</div>
+    <button class="audio-button" data-audio="audio-rimaykullayki">🔊</button>
+    <audio id="audio-rimaykullayki" src="../../../../assets/audio/rimaykullayki.mp3"></audio>
+  </div>
+  <div class="vocab-card">
+    <div>
+      <div class="quechua clickable" data-translation="Buenos días">Allin p'unchay</div>
+      <div class="pronunciation">/a-yin pun-chay/</div>
+    </div>
+    <div class="translation clickable" data-quechua="Allin p'unchay">Buenos días</div>
+    <button class="audio-button" data-audio="audio-allinpunchay">🔊</button>
+    <audio id="audio-allinpunchay" src="../../../../assets/audio/allinpunchay.mp3"></audio>
+  </div>
+  <div class="grammar-point">
+    <p><strong>Uso cultural:</strong> "Rimaykullayki" se usa con personas que no conoces o en situaciones formales.</p>
+  </div>
+  <div class="step-indicator">Tema 1 de 5</div>
+</div>
+
+<!-- Tema 2 -->
+<div class="topic-card" id="topic2">
+  <h3 class="topic-title">2. Decir tu nombre</h3>
+  <!-- Contenido -->
+  <div class="vocab-card">
+    <div>
+      <div class="quechua clickable" data-translation="Yo">Ñuqaqa</div>
+      <div class="pronunciation">/nyu-qa-qa/</div>
+    </div>
+    <div class="translation clickable" data-quechua="Ñuqaqa">Yo</div>
+    <button class="audio-button" data-audio="audio-nuqaqa">🔊</button>
+    <audio id="audio-nuqaqa" src="../../../../assets/audio/nuqaqa.mp3"></audio>
+  </div>
+  <div class="vocab-card">
+    <div>
+      <div class="quechua clickable" data-translation="Mi nombre es">Sutiyqa</div>
+      <div class="pronunciation">/su-ti-yqa/</div>
+    </div>
+    <div class="translation clickable" data-quechua="Sutiyqa">Mi nombre es</div>
+    <button class="audio-button" data-audio="audio-sutiyqa">🔊</button>
+    <audio id="audio-sutiyqa" src="../../../../assets/audio/sutiyqa.mp3"></audio>
+  </div>
+  <div class="grammar-point">
+    <p><strong>Gramática:</strong> El sufijo "-qa" marca el tema de la oración.</p>
+    <div class="example">Ñuqaqa → En cuanto a mí / Yo</div>
+    <div class="example">Sutiyqa → En cuanto a mi nombre</div>
+  </div>
+  <div class="step-indicator">Tema 2 de 5</div>
+</div>
+
+<!-- Tema 3 -->
+<div class="topic-card" id="topic3">
+  <h3 class="topic-title">3. Preguntar nombres</h3>
+  <!-- Contenido -->
+  <div class="vocab-card">
+    <div>
+      <div class="quechua clickable" data-translation="¿Cómo te llamas?">¿Iman sutiyki?</div>
+      <div class="pronunciation">/i-man su-ti-yki/</div>
+    </div>
+    <div class="translation clickable" data-quechua="¿Iman sutiyki?">¿Cómo te llamas?</div>
+    <button class="audio-button" data-audio="audio-imansutiyki">🔊</button>
+    <audio id="audio-imansutiyki" src="../../../../assets/audio/imansutiyki.mp3"></audio>
+  </div>
+  <div class="vocab-card">
+    <div>
+      <div class="quechua clickable" data-translation="¿De dónde eres?">¿Maymantataq kanki?</div>
+      <div class="pronunciation">/may-man-ta-taq kan-ki/</div>
+    </div>
+    <div class="translation clickable" data-quechua="¿Maymantataq kanki?">¿De dónde eres?</div>
+    <button class="audio-button" data-audio="audio-maymantataq">🔊</button>
+    <audio id="audio-maymantataq" src="../../../../assets/audio/maymantataq.mp3"></audio>
+  </div>
+  <div class="grammar-point">
+    <p><strong>Estructura:</strong> Las preguntas en quechua suelen terminar con "-taq".</p>
+    <div class="example">Maymantataq → ¿De dónde?</div>
+    <div class="example">Imataq → ¿Qué?</div>
+  </div>
+  <div class="step-indicator">Tema 3 de 5</div>
+</div>
+
+    <!-- Tema 4 -->
+    <div class="topic-card" id="topic4">
+      <h3 class="topic-title">4. Diálogo de ejemplo</h3>
+      <!-- Contenido -->
+      <div style="background: #f0f7f0; padding: 15px; border-radius: 8px;">
+        <p><strong>Juan:</strong> <span class="quechua clickable" data-translation="¡Hola!">Rimaykullayki</span>!</p>
+        <p><strong>María:</strong> <span class="quechua clickable" data-translation="¡Hola!">Rimaykullayki</span>!</p>
+        <p><strong>Juan:</strong> <span class="quechua clickable" data-translation="¿Cómo te llamas?">¿Iman sutiyki</span>?</p>
+        <p><strong>María:</strong> <span class="quechua clickable" data-translation="Yo soy María">Ñuqaqa Maríam</span>.</p>
+        <p><strong>Juan:</strong> <span class="quechua clickable" data-translation="¡Buenos días, María!">Allin p'unchay, María</span>!</p>
+      </div>
+      <div class="grammar-point">
+        <p><strong>Nota:</strong> "-m" al final de "Maríam" es un sufijo de afirmación.</p>
+      </div>
+      <div class="step-indicator">Tema 4 de 5</div>
+    </div>
+
+    <!-- Tema 5 - Nuevo tema sobre animales -->
+    <div class="topic-card" id="topic5">
+      <h3 class="topic-title">5. Animales Básicos</h3>
+      <!-- Contenido -->
+      <div class="media-container">
+        <div class="image-with-audio">
+          <img src="../../../../assets/images/dog.jpg" class="interactive-image" alt="Perro" data-audio="dog-audio">
+          <p class="image-caption">En quechua, perro se dice <span class="quechua clickable" data-translation="perro">Allqu</span></p>
+          <audio id="dog-audio" src="../../../../assets/audio/dog.mp3"></audio>
+        </div>
+      </div>
+      
+      <div class="vocab-card">
+        <div>
+          <div class="quechua clickable" data-translation="perro">Allqu</div>
+          <div class="pronunciation">/al-qhu/</div>
+        </div>
+        <div class="translation clickable" data-quechua="Allqu">Perro</div>
+        <button class="audio-button" data-audio="dog-audio">🔊</button>
+      </div>
+      
+      <div class="grammar-point">
+        <p><strong>Nota cultural:</strong> En la cosmovisión andina, los animales tienen un significado especial. El allqu (perro) era considerado un protector espiritual.</p>
+      </div>
+      <div class="step-indicator">Tema 5 de 5</div>
+    </div>
+    <!-- Ejercicios -->
+    <div class="topic-card" id="exercise1">
+      <div class="exercise">
+        <h3 class="exercise-title">Práctica 1</h3>
+        <div class="exercise-question">___________</span>,<span class="quechua clickable" data-translation="Yo">ñuqaqa</span> Juan</span> <span class="quechua clickable" data-translation="mi nombre es">sutiymi</span>.</div>
+        <div class="options-container" id="options1"></div>
+        <button class="nav-btn check-btn" data-exercise="1">Verificar</button>
+        <div class="feedback" id="feedback1"></div>
+      </div>
+    </div>
+
+    <div class="topic-card" id="exercise2">
+      <div class="exercise">
+        <h3 class="exercise-title">Práctica 2</h3>
+        <div class="exercise-question"><span class="quechua clickable" data-translation="Yo">Ñuqaqa </span> ________ <span class="quechua clickable" data-translation="soy">kani</span>.</div>
+        <div class="options-container" id="options2"></div>
+        <button class="nav-btn check-btn" data-exercise="2">Verificar</button>
+        <div class="feedback" id="feedback2"></div>
+      </div>
+    </div>
+
+    <div class="topic-card" id="exercise3">
+      <div class="exercise">
+        <h3 class="exercise-title">Práctica 3</h3>
+        <div class="exercise-question"><span class="clickable" data-quechua="Iskay">Dos</span>, <span class="clickable" data-quechua="kimsa">tres</span>, ______, <span class="clickable" data-quechua="pichqa">cinco</span>.</div>
+        <div class="options-container" id="options3"></div>
+        <button class="nav-btn check-btn" data-exercise="3">Verificar</button>
+        <div class="feedback" id="feedback3"></div>
+      </div>
+    </div>
+
+    <div class="topic-card" id="exercise4">
+      <div class="exercise">
+        <h3 class="exercise-title">Práctica 4</h3>
+        <div class="exercise-question">Escribe en quechua: <span class="clickable" data-quechua="Allin p'unchay">Buen día</span>.</div>
+        <input type="text" class="text-input" id="input4" placeholder="Tu respuesta aquí...">
+        <button class="nav-btn check-btn" data-exercise="4">Verificar</button>
+        <div class="feedback" id="feedback4"></div>
+      </div>
+    </div>
+
+    <div class="topic-card" id="exercise5">
+      <div class="exercise">
+        <h3 class="exercise-title">Práctica 5</h3>
+        <div class="exercise-question">Escribe en quechua: '<span class="clickable" data-quechua="Ñuqaqa">Yo</span> <span class="clickable" data-quechua="kani">soy</span> <span class="clickable" data-quechua="Ana">Ana</span>.'</div>
+        <input type="text" class="text-input" id="input5" placeholder="Tu respuesta aquí...">
+        <button class="nav-btn check-btn" data-exercise="5">Verificar</button>
+        <div class="feedback" id="feedback5"></div>
+      </div>
+    </div>
+
+    <div class="topic-card" id="exercise6">
+      <div class="exercise">
+        <h3 class="exercise-title">Práctica 6</h3>
+        <div class="exercise-question">Completa: <span class="clickable" data-quechua="huk">1</span>, <span class="clickable" data-quechua="iskay">2</span>, <span class="clickable" data-quechua="kimsa">3</span>, ____ (en quechua).</div>
+        <input type="text" class="text-input" id="input6" placeholder="Tu respuesta aquí...">
+        <button class="nav-btn check-btn" data-exercise="6">Verificar</button>
+        <div class="feedback" id="feedback6"></div>
+      </div>
+    </div>
+
+    <div class="topic-card" id="exercise1">
+      <div class="exercise">
+        <h3 class="exercise-title">Práctica 7</h3>
+        <div class="exercise-question"><span class="clickable" data-quechua="En quechua no se usan artículos definidos como “el”, “la”">El</span> <span class="clickable" data-quechua="Allqu">Perro</span> <span class="clickable" data-quechua="-pi (sufijo)"> en</span> <span class="clickable" data-quechua="runasimi-pi = Rumisimi es Quechua con -pi es = En Quechua">Quechua</span> <span class="clickable" data-quechua="❌ El pronombre reflexivo “se” no se usa explícitamente; se indica con sufijos verbales">se</span> <span class="clickable" data-quechua="sut’in 📛 De suti (nombre) + sufijo impersonal -n → “(se) llama”"> llama</span>, ______, </span>.</div>
+        <div class="options-container" id="options7"></div>
+        <button class="nav-btn check-btn" data-exercise="7">Verificar</button>
+        <div class="feedback" id="feedback7"></div>
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="nav-btn secondary" id="prev-btn" disabled>← Anterior</button>
+      <button class="nav-btn" id="next-btn">Siguiente →</button>
+    </div>
+  </main>
+
+  <div class="translation-display" id="translationDisplay"></div>
+
+  <!-- Scripts -->
+  <script>
+    window.ejercicios = [
+      {
+        id: 1, type: "complete", question: "_________, ñuqaqa Juan sutiymi.",
+        options: [
+          { quechua: "Rimaykullayki", spanish: "Hola (informal)" },
+          { quechua: "Allin p'unchay", spanish: "Buenos días" },
+          { quechua: "Sumaq kawsay", spanish: "Buena vida" }
+        ],
+        answer: "Allin p'unchay"
+      },
+      {
+        id: 2, type: "complete", question: "Ñuqaqa ________ kani.",
+        options: [
+          { quechua: "Qosqomanta", spanish: "De Cusco" },
+          { quechua: "maymantan", spanish: "¿De dónde?" },
+          { quechua: "wasi", spanish: "casa" }
+        ],
+        answer: "Qosqomanta"
+      },
+      {
+        id: 3, type: "complete", question: "Iskay, kimsa, ______, pichqa.",
+        options: [
+          { quechua: "suqta", spanish: "seis" },
+          { quechua: "tawa", spanish: "cuatro" },
+          { quechua: "qanchis", spanish: "siete" }
+        ],
+        answer: "tawa"
+      },
+      { id: 4, type: "write", question: "Escribe en quechua: Buen día.", answer: "Allin p'unchay" },
+      { id: 5, type: "write", question: "Escribe en quechua: 'Yo soy Ana.'", answer: "Ñuqaqa Ana kani." },
+      { id: 6, type: "write", question: "Completa: 1, 2, 3, ____ (en quechua).", answer: "tawa" },
+      {
+        id: 7, 
+        type: "complete", 
+        question: "El perro en quechua se llama: _______",
+        options: [
+          { quechua: "Mishi", spanish: "Gato" },
+          { quechua: "Allqu", spanish: "Perro" },
+          { quechua: "Uchpa", spanish: "Ceniza" }
+        ],
+        answer: "Allqu"
+      },
+      {
+        id: 8,
+        type: "write",
+        question: "Escribe en quechua: 'El perro'",
+        answer: "Allqu"
+      }
+    ];
+  </script>
+
+  <script src="../../../../assets/js/lesson.js"></script>
+  <script src="../../../../assets/js/exercises.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const translationDisplay = document.getElementById('translationDisplay');
+      
+      // Manejar clics en palabras quechua
+      document.querySelectorAll('.quechua.clickable').forEach(element => {
+        element.addEventListener('click', function() {
+          const spanishTranslation = this.getAttribute('data-translation');
+          translationDisplay.textContent = `Español: ${spanishTranslation}`;
+          translationDisplay.style.display = 'block';
+          
+          setTimeout(() => {
+            translationDisplay.style.display = 'none';
+          }, 3000);
+        });
+      });
+      
+      // Manejar clics en palabras español (incluyendo las de los ejercicios)
+      document.querySelectorAll('.clickable[data-quechua]').forEach(element => {
+        element.addEventListener('click', function() {
+          const quechuaWord = this.getAttribute('data-quechua');
+          translationDisplay.textContent = `Quechua: ${quechuaWord}`;
+          translationDisplay.style.display = 'block';
+          
+          setTimeout(() => {
+            translationDisplay.style.display = 'none';
+          }, 3000);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
