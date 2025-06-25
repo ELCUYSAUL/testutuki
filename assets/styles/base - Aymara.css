@@ -1,0 +1,37 @@
+:root {
+    --primary: #2b47e6;
+    --primary-dark: #2b82e6;
+    --secondary: #FFC107;
+    --accent: #2196F3;
+    --dark: #212121;
+    --light: #F5F5F5;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .phases-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .mascota-logo {
+        width: 60px;
+        height: 60px;
+    }
+}
